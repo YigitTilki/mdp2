@@ -29,6 +29,52 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProfileView]
+class ProfileRoute extends PageRouteInfo<ProfileRouteArgs> {
+  ProfileRoute({
+    required UserModel userModel,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProfileRoute.name,
+          args: ProfileRouteArgs(
+            userModel: userModel,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ProfileRouteArgs>();
+      return ProfileView(
+        userModel: args.userModel,
+        key: args.key,
+      );
+    },
+  );
+}
+
+class ProfileRouteArgs {
+  const ProfileRouteArgs({
+    required this.userModel,
+    this.key,
+  });
+
+  final UserModel userModel;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ProfileRouteArgs{userModel: $userModel, key: $key}';
+  }
+}
+
+/// generated route for
 /// [SplashView]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})

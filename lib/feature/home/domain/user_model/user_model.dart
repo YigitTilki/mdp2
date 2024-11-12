@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
-import 'package:mdp2/feature/home/domain/address_model.dart';
-import 'package:mdp2/feature/home/domain/company_model.dart';
+import 'package:mdp2/feature/home/domain/user_model/address_model.dart';
+import 'package:mdp2/feature/home/domain/user_model/company_model.dart';
 
-class UserModel with EquatableMixin {
-  UserModel({
+class UserModel extends Equatable {
+  const UserModel({
     this.id,
     this.name,
     this.username,
@@ -30,14 +30,14 @@ class UserModel with EquatableMixin {
           : Company.fromJson(json['company'] as Map<String, dynamic>),
     );
   }
-  int? id;
-  String? name;
-  String? username;
-  String? email;
-  Address? address;
-  String? phone;
-  String? website;
-  Company? company;
+  final int? id;
+  final String? name;
+  final String? username;
+  final String? email;
+  final Address? address;
+  final String? phone;
+  final String? website;
+  final Company? company;
 
   @override
   List<Object?> get props =>

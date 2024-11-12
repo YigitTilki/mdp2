@@ -13,10 +13,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   #core
   equatable: ^2.0.5
   flutter_dotenv: ^5.2.1
+  flutter_i18n: ^0.36.2
 
   #network
   dio: ^5.7.0
@@ -30,6 +33,7 @@ dependencies:
   #util
   connectivity_plus: ^6.1.0
   logger: ^2.4.0
+  cached_network_image: ^3.4.1
 
   cupertino_icons: ^1.0.8
 
@@ -50,6 +54,7 @@ flutter:
 
   assets:
     - .env
+    - assets/i18n/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

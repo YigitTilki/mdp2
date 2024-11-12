@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class Address with EquatableMixin {
-  Address({
+class Address extends Equatable {
+  const Address({
     this.street,
     this.suite,
     this.city,

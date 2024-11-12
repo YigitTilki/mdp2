@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class Company with EquatableMixin {
-  Company({
+class Company extends Equatable {
+  const Company({
     this.name,
     this.catchPhrase,
     this.bs,
