@@ -9,12 +9,12 @@ import 'package:logger/logger.dart';
 final class ApplicationInitialize {
   Future<void> make() async {
     WidgetsFlutterBinding.ensureInitialized();
-    await runZonedGuarded<Future<void>>(_initialize, (error, stack) {
+    await runZonedGuarded<Future<void>>(initialize, (error, stack) {
       Logger().e(error);
     });
   }
 
-  static Future<void> _initialize() async {
+  static Future<void> initialize() async {
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     await dotenv.load();
 
