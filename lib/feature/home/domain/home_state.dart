@@ -1,29 +1,26 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:mdp2/feature/home/domain/user_model/user_model.dart';
 
 class HomeState extends Equatable {
-  const HomeState({this.isLoading = false, this.users, this.error = false});
+  const HomeState({
+    this.users = const AsyncValue.loading(),
+  });
 
-  final bool isLoading;
-  final List<UserModel>? users;
-  final bool error;
+  final AsyncValue<List<UserModel>> users;
 
   @override
   List<Object?> get props {
-    return [isLoading, users, error];
+    return [users];
   }
 
   HomeState copyWith({
-    bool? isLoading,
-    List<UserModel>? users,
-    bool? error,
+    AsyncValue<List<UserModel>>? users,
   }) {
     return HomeState(
-      isLoading: isLoading ?? this.isLoading,
       users: users ?? this.users,
-      error: error ?? this.error,
     );
   }
 }
