@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp2/feature/home/domain/user_model/user_model.dart';
 import 'package:mdp2/feature/profile/application/profile_provider.dart';
@@ -30,6 +31,10 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
       ref
           .read(profileProvider.notifier)
           .getAlbums(widget.userModel.id.toString());
+
+      ref
+          .read(profileProvider.notifier)
+          .getPosts(widget.userModel.id.toString());
     });
   }
 
@@ -53,25 +58,34 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Expanded(child: ProfileAvatar()),
+                      const Expanded(child: ProfileAvatar()),
                       Expanded(
                         child: FollowerDetailColumn(
                           count: '3',
-                          label: 'gönderi',
+                          label: FlutterI18n.translate(
+                            context,
+                            'profile_page.posts',
+                          ),
                         ),
                       ),
                       Expanded(
                         child: FollowerDetailColumn(
                           count: '416',
-                          label: 'takipçi',
+                          label: FlutterI18n.translate(
+                            context,
+                            'profile_page.followers',
+                          ),
                         ),
                       ),
                       Expanded(
                         child: FollowerDetailColumn(
                           count: '379',
-                          label: 'takip',
+                          label: FlutterI18n.translate(
+                            context,
+                            'profile_page.following',
+                          ),
                         ),
                       ),
                     ],
@@ -110,7 +124,12 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                               ),
                             ),
                           ),
-                          child: const Text('Profili Düzenle'),
+                          child: Text(
+                            FlutterI18n.translate(
+                              context,
+                              'profile_page.edit_profile',
+                            ),
+                          ),
                         ),
                       ),
                       const AppSpacer.horizontal10(),
@@ -125,7 +144,12 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                               ),
                             ),
                           ),
-                          child: const Text('Profili Paylaş'),
+                          child: Text(
+                            FlutterI18n.translate(
+                              context,
+                              'profile_page.share_profile',
+                            ),
+                          ),
                         ),
                       ),
                       const AppSpacer.horizontal10(),
@@ -159,11 +183,13 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
             if (state.isLoading)
               const LinearProgressIndicator()
             else
-              const Expanded(
+              Expanded(
                 child: TabBarView(
                   children: [
-                    AlbumsView(),
-                    Text('fsd'),
+                    AlbumsView(
+                      userModel: widget.userModel,
+                    ),
+                    const Text('fsd'),
                   ],
                 ),
               ),
