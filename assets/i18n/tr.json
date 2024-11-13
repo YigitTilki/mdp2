@@ -2,6 +2,13 @@
   "home_page": { 
       "hello": "Merhaba",
       "welcome": "Uygulamaya hoş geldiniz"
+    },
+    "profile_page": {
+        "posts": "gönderi",
+        "followers": "takipçi",
+        "following": "takip",
+        "edit_profile": "Profili Düzenle",
+        "share_profile": "Profil Paylaş"
     }
 
 }
