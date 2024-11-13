@@ -1,22 +1,22 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:equatable/equatable.dart';
+part 'company_model.g.dart';
 
-class Company extends Equatable {
-  const Company({
+@JsonSerializable()
+class Company with EquatableMixin {
+  Company({
     this.name,
     this.catchPhrase,
     this.bs,
   });
 
-  factory Company.fromJson(Map<String, dynamic> json) {
-    return Company(
-      name: json['name'] as String?,
-      catchPhrase: json['catchPhrase'] as String?,
-      bs: json['bs'] as String?,
-    );
-  }
-  final String? name;
-  final String? catchPhrase;
-  final String? bs;
+  factory Company.fromJson(Map<String, dynamic> json) =>
+      _$CompanyFromJson(json);
+  String? name;
+  String? catchPhrase;
+  String? bs;
+
+  Map<String, dynamic> toJson() => _$CompanyToJson(this);
 
   @override
   List<Object?> get props => [name, catchPhrase, bs];
@@ -31,13 +31,5 @@ class Company extends Equatable {
       catchPhrase: catchPhrase ?? this.catchPhrase,
       bs: bs ?? this.bs,
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'catchPhrase': catchPhrase,
-      'bs': bs,
-    };
   }
 }
