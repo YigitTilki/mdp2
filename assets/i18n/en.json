@@ -1,5 +1,8 @@
 {
-    "hello": "Hello",
-    "welcome": "Welcome to the app"
+    "home_page": {
+        "hello": "Hello",
+        "welcome": "Welcome to the app"
+    }
+    
 }
   

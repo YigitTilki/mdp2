@@ -1,5 +1,8 @@
 {
-    "hello": "Merhaba",
-    "welcome": "Uygulamaya hoş geldiniz"
-  }
+  "home_page": { 
+      "hello": "Merhaba",
+      "welcome": "Uygulamaya hoş geldiniz"
+    }
+
+}
   
