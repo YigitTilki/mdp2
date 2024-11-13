@@ -5,27 +5,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp2/product/init/application_init.dart';
 import 'package:mdp2/product/navigation/app_router.dart';
 
+final appRouter = AppRouter();
+
 void main() async {
   await ApplicationInitialize().make();
-  runApp(ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
-  final _appRouter = AppRouter();
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      routerConfig: _appRouter.config(),
-      /* localizationsDelegates: [
+      routerConfig: appRouter.config(),
+      localizationsDelegates: [
         FlutterI18nDelegate(
           translationLoader: FileTranslationLoader(
             basePath: 'assets/i18n',
             forcedLocale: const Locale('en'),
-            
           ),
         ),
         GlobalMaterialLocalizations.delegate,
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale('en'),
         Locale('tr'),
-      ], */
+      ],
     );
   }
 }
