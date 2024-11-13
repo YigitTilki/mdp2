@@ -29,6 +29,58 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [PostsView]
+class PostsRoute extends PageRouteInfo<PostsRouteArgs> {
+  PostsRoute({
+    required UserModel userModel,
+    required int initialIndex,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          PostsRoute.name,
+          args: PostsRouteArgs(
+            userModel: userModel,
+            initialIndex: initialIndex,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'PostsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PostsRouteArgs>();
+      return PostsView(
+        userModel: args.userModel,
+        initialIndex: args.initialIndex,
+        key: args.key,
+      );
+    },
+  );
+}
+
+class PostsRouteArgs {
+  const PostsRouteArgs({
+    required this.userModel,
+    required this.initialIndex,
+    this.key,
+  });
+
+  final UserModel userModel;
+
+  final int initialIndex;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'PostsRouteArgs{userModel: $userModel, initialIndex: $initialIndex, key: $key}';
+  }
+}
+
+/// generated route for
 /// [ProfileView]
 class ProfileRoute extends PageRouteInfo<ProfileRouteArgs> {
   ProfileRoute({
