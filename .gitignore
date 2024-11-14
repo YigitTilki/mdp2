@@ -19,6 +19,8 @@
 
 *.gr.dart
 
+*todo
+
 # IntelliJ related
 *.iml
 *.ipr
