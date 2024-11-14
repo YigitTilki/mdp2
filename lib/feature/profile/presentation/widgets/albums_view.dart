@@ -24,9 +24,9 @@ class AlbumsView extends ConsumerWidget {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
         ),
-        itemCount: state.albums?.length ?? 0,
+        itemCount: state.albums.value?.length ?? 0,
         itemBuilder: (BuildContext context, int index) {
-          final imageUrl = state.imageUrls[index] ?? '';
+          final imageUrl = state.imageUrls.value?[index] ?? '';
 
           return Stack(
             alignment: Alignment.topRight,

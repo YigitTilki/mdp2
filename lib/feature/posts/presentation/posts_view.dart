@@ -28,10 +28,10 @@ class PostsView extends ConsumerWidget {
       ),
       body: PageView.builder(
         scrollDirection: Axis.vertical,
-        itemCount: state.albums?.length ?? 0,
+        itemCount: state.albums.value?.length ?? 0,
         controller: PageController(initialPage: initialIndex),
         itemBuilder: (context, index) {
-          final imageUrl = state.imageUrls[index] ?? '';
+          final imageUrl = state.imageUrls.value?[index] ?? '';
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
