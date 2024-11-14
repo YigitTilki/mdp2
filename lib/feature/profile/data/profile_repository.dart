@@ -1,81 +1,94 @@
+import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
-import 'package:mdp2/feature/profile/domain/album_model.dart';
-import 'package:mdp2/feature/profile/domain/photo_model.dart';
-import 'package:mdp2/feature/profile/domain/post_model.dart';
-import 'package:mdp2/product/service/api_service.dart';
+import 'package:mdp2/feature/profile/domain/interface/i_profile_repository.dart';
+import 'package:mdp2/feature/profile/domain/models/album_model.dart';
+import 'package:mdp2/feature/profile/domain/models/photo_model.dart';
+import 'package:mdp2/feature/profile/domain/models/post_model.dart';
 
-class ProfileRepository {
-  final _dio = ApiService().dio;
-  final _logger = Logger();
+class ProfileRepository implements IProfileRepository {
+  ProfileRepository({
+    required this.dio,
+    required this.logger,
+  });
 
-  Future<List<AlbumModel>> getUserAlbums(String userId) async {
+  final Dio dio;
+  final Logger logger;
+
+  Future<List<AlbumModel>> _getUserAlbums(String userId) async {
     try {
-      final response = await _dio.get<dynamic>('/users/$userId/albums');
+      final response = await dio.get<dynamic>('/users/$userId/albums');
       if (response.statusCode == 200) {
         final albums = (response.data! as List)
             .map((album) => AlbumModel.fromJson(album as Map<String, dynamic>))
             .toList();
         return albums;
       } else {
-        _logger.d('message: ${response.statusMessage}');
+        logger.d('message: ${response.statusMessage}');
         return [];
       }
     } catch (e) {
-      _logger.d('error get albums: $e');
+      logger.d('error get user albums: $e');
       return [];
     }
   }
 
-  Future<List<PhotoModel>> getAlbumPhotos(String albumId) async {
+  Future<List<PhotoModel>> _getAlbumPhotos(String albumId) async {
     try {
-      final response = await _dio.get<dynamic>('/albums/$albumId/photos');
+      final response = await dio.get<dynamic>('/albums/$albumId/photos');
       if (response.statusCode == 200) {
         final photos = (response.data! as List)
             .map((photo) => PhotoModel.fromJson(photo as Map<String, dynamic>))
             .toList();
         return photos;
       } else {
-        _logger.d('message: ${response.statusMessage}');
+        logger.d('message: ${response.statusMessage}');
         return [];
       }
-    } catch (exception) {
-      print(exception);
+    } catch (e) {
+      logger.d("error get album's photos: $e");
       return [];
     }
   }
 
-  Future<List<AlbumModel>> getUserAlbumsWithPhotos(String userId) async {
+  @override
+  Future<AsyncValue<List<AlbumModel>>> getUserAlbumsWithPhotos(
+    String userId,
+  ) async {
     try {
-      final albums = await getUserAlbums(userId);
-      if (albums.isEmpty) return [];
+      final albums = await _getUserAlbums(userId);
+      if (albums.isEmpty) {
+        return AsyncValue.error('Empty albums', StackTrace.current);
+      }
 
       for (final album in albums) {
-        final photos = await getAlbumPhotos(album.id.toString());
+        final photos = await _getAlbumPhotos(album.id.toString());
         album.photos = photos;
       }
 
-      return albums;
+      return AsyncValue.data(albums);
     } catch (e) {
-      _logger.d('error get albums with photos: $e');
-      return [];
+      logger.d('error get albums with photos: $e');
+      return AsyncValue.error(e, StackTrace.current);
     }
   }
 
-  Future<List<PostModel>> getUserPosts(String userId) async {
+  @override
+  Future<AsyncValue<List<PostModel>>> getUserPosts(String userId) async {
     try {
-      final response = await _dio.get<dynamic>('/users/$userId/posts');
+      final response = await dio.get<dynamic>('/users/$userId/posts');
       if (response.statusCode == 200) {
         final posts = (response.data! as List)
             .map((post) => PostModel.fromJson(post as Map<String, dynamic>))
             .toList();
-        return posts;
+        return AsyncValue.data(posts);
       } else {
-        _logger.d('message: ${response.statusMessage}');
-        return [];
+        logger.d('message: ${response.statusMessage}');
+        return AsyncValue.error('error', StackTrace.current);
       }
     } catch (e) {
-      _logger.d('error get posts: $e');
-      return [];
+      logger.d('error get posts: $e');
+      return AsyncValue.error(e, StackTrace.current);
     }
   }
 }
