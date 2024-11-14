@@ -1,25 +1,25 @@
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class PostModel extends Equatable {
-  const PostModel({
+part 'post_model.g.dart';
+
+@JsonSerializable()
+class PostModel with EquatableMixin {
+  PostModel({
     this.userId,
     this.id,
     this.title,
     this.body,
   });
 
-  factory PostModel.fromJson(Map<String, dynamic> json) {
-    return PostModel(
-      userId: json['userId'] as int?,
-      id: json['id'] as int?,
-      title: json['title'] as String?,
-      body: json['body'] as String?,
-    );
-  }
+  factory PostModel.fromJson(Map<String, dynamic> json) =>
+      _$PostModelFromJson(json);
   final int? userId;
   final int? id;
   final String? title;
   final String? body;
+
+  Map<String, dynamic> toJson() => _$PostModelToJson(this);
 
   @override
   List<Object?> get props => [userId, id, title, body];
@@ -36,14 +36,5 @@ class PostModel extends Equatable {
       title: title ?? this.title,
       body: body ?? this.body,
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'userId': userId,
-      'id': id,
-      'title': title,
-      'body': body,
-    };
   }
 }

@@ -1,7 +1,11 @@
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class PhotoModel extends Equatable {
-  const PhotoModel({
+part 'photo_model.g.dart';
+
+@JsonSerializable()
+class PhotoModel with EquatableMixin {
+  PhotoModel({
     this.albumId,
     this.id,
     this.title,
@@ -9,20 +13,15 @@ class PhotoModel extends Equatable {
     this.thumbnailUrl,
   });
 
-  factory PhotoModel.fromJson(Map<String, dynamic> json) {
-    return PhotoModel(
-      albumId: json['albumId'] as int?,
-      id: json['id'] as int?,
-      title: json['title'] as String?,
-      url: json['url'] as String?,
-      thumbnailUrl: json['thumbnailUrl'] as String?,
-    );
-  }
+  factory PhotoModel.fromJson(Map<String, dynamic> json) =>
+      _$PhotoModelFromJson(json);
   final int? albumId;
   final int? id;
   final String? title;
   final String? url;
   final String? thumbnailUrl;
+
+  Map<String, dynamic> toJson() => _$PhotoModelToJson(this);
 
   @override
   List<Object?> get props => [albumId, id, title, url, thumbnailUrl];
@@ -41,15 +40,5 @@ class PhotoModel extends Equatable {
       url: url ?? this.url,
       thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'albumId': albumId,
-      'id': id,
-      'title': title,
-      'url': url,
-      'thumbnailUrl': thumbnailUrl,
-    };
   }
 }
