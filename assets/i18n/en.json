@@ -1,0 +1,15 @@
+{
+    "home_page": {
+        "hello": "Hello",
+        "welcome": "Welcome to the app"
+    },
+    "profile_page": {
+        "posts": "post",
+        "followers": "followers",
+        "following": "following",
+        "edit_profile": "Edit Profile",
+        "share_profile": "Share Profile"
+    }
+    
+}
+  
