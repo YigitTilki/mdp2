@@ -1,6 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
-import 'package:mdp2/feature/home/domain/user_model/user_model.dart';
 import 'package:mdp2/feature/home/presentation/home_view.dart';
 import 'package:mdp2/feature/posts/presentation/posts_view.dart';
 import 'package:mdp2/feature/profile/presentation/profile_view.dart';
