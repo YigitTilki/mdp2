@@ -4,8 +4,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'post_model.g.dart';
 
 @JsonSerializable()
-class PostModel with EquatableMixin {
-  PostModel({
+class PostModel extends Equatable {
+  const PostModel({
     this.userId,
     this.id,
     this.title,

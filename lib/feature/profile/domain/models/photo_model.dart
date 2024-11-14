@@ -4,8 +4,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'photo_model.g.dart';
 
 @JsonSerializable()
-class PhotoModel with EquatableMixin {
-  PhotoModel({
+class PhotoModel extends Equatable {
+  const PhotoModel({
     this.albumId,
     this.id,
     this.title,

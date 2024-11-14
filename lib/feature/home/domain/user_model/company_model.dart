@@ -4,8 +4,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'company_model.g.dart';
 
 @JsonSerializable()
-class Company with EquatableMixin {
-  Company({
+class Company extends Equatable {
+  const Company({
     this.name,
     this.catchPhrase,
     this.bs,
@@ -13,9 +13,9 @@ class Company with EquatableMixin {
 
   factory Company.fromJson(Map<String, dynamic> json) =>
       _$CompanyFromJson(json);
-  String? name;
-  String? catchPhrase;
-  String? bs;
+  final String? name;
+  final String? catchPhrase;
+  final String? bs;
 
   Map<String, dynamic> toJson() => _$CompanyToJson(this);
 

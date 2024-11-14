@@ -6,8 +6,8 @@ import 'package:mdp2/feature/home/domain/user_model/company_model.dart';
 part 'user_model.g.dart';
 
 @JsonSerializable()
-class UserModel with EquatableMixin {
-  UserModel({
+class UserModel extends Equatable {
+  const UserModel({
     this.id,
     this.name,
     this.username,
@@ -20,14 +20,14 @@ class UserModel with EquatableMixin {
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
-  int? id;
-  String? name;
-  String? username;
-  String? email;
-  Address? address;
-  String? phone;
-  String? website;
-  Company? company;
+  final int? id;
+  final String? name;
+  final String? username;
+  final String? email;
+  final Address? address;
+  final String? phone;
+  final String? website;
+  final Company? company;
 
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
