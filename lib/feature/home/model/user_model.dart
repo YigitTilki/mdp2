@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mdp2/feature/home/domain/user_model/address_model.dart';
-import 'package:mdp2/feature/home/domain/user_model/company_model.dart';
+import 'package:mdp2/feature/home/model/address_model.dart';
+import 'package:mdp2/feature/home/model/company_model.dart';
 
 part 'user_model.g.dart';
 

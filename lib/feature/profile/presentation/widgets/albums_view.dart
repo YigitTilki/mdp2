@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mdp2/feature/home/domain/user_model/user_model.dart';
+import 'package:mdp2/feature/home/model/user_model.dart';
 import 'package:mdp2/feature/profile/application/profile_provider.dart';
 import 'package:mdp2/product/navigation/app_router.dart';
 

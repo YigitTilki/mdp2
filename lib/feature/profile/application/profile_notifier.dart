@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp2/feature/profile/domain/interface/i_profile_repository.dart';
-import 'package:mdp2/feature/profile/domain/models/album_model.dart';
+import 'package:mdp2/feature/profile/model/album_model.dart';
 import 'package:mdp2/feature/profile/domain/profile_state.dart';
 import 'package:mdp2/product/base/base_notifier.dart';
 

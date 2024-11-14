@@ -2,8 +2,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:mdp2/feature/profile/domain/models/album_model.dart';
-import 'package:mdp2/feature/profile/domain/models/post_model.dart';
+import 'package:mdp2/feature/profile/model/album_model.dart';
+import 'package:mdp2/feature/profile/model/post_model.dart';
 
 class ProfileState extends Equatable {
   const ProfileState({

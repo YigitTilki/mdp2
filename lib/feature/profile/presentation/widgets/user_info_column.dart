@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mdp2/feature/home/domain/user_model/user_model.dart';
+import 'package:mdp2/feature/home/model/user_model.dart';
 import 'package:mdp2/product/helper/app_spacer.dart';
 
 class UserInfoColumn extends StatelessWidget {

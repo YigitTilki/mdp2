@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mdp2/feature/home/application/home_provider.dart';
+import 'package:mdp2/feature/home/viewmodel/home_view_model.dart';
 import 'package:mdp2/feature/profile/application/profile_provider.dart';
 import 'package:mdp2/product/navigation/app_router.dart';
 
@@ -19,7 +19,7 @@ class HomeView extends ConsumerStatefulWidget {
 class _HomeViewState extends ConsumerState<HomeView> with _HomeMixin {
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(homeProvider).users;
+    final state = ref.watch(homeViewModelProvider);
 
     return Scaffold(
       appBar: AppBar(

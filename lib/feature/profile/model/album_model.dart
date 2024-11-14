@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mdp2/feature/profile/domain/models/photo_model.dart';
+import 'package:mdp2/feature/profile/model/photo_model.dart';
 
 part 'album_model.g.dart';
 

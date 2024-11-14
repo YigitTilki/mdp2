@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:mdp2/feature/profile/domain/interface/i_profile_repository.dart';
-import 'package:mdp2/feature/profile/domain/models/album_model.dart';
-import 'package:mdp2/feature/profile/domain/models/photo_model.dart';
-import 'package:mdp2/feature/profile/domain/models/post_model.dart';
+import 'package:mdp2/feature/profile/model/album_model.dart';
+import 'package:mdp2/feature/profile/model/photo_model.dart';
+import 'package:mdp2/feature/profile/model/post_model.dart';
 
 class ProfileRepository implements IProfileRepository {
   ProfileRepository({
