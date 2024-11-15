@@ -3,6 +3,7 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp2/product/init/application_init.dart';
+import 'package:mdp2/product/init/theme/light_theme.dart';
 import 'package:mdp2/product/navigation/app_router.dart';
 
 final appRouter = AppRouter();
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: appRouter.config(),
+      theme: LightTheme().themeData,
       localizationsDelegates: [
         FlutterI18nDelegate(
           translationLoader: FileTranslationLoader(
