@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp2/product/helper/app_spacer.dart';
+import 'package:mdp2/product/helper/extensions/translate_extension.dart';
 
 class EditShareRow extends ConsumerWidget {
   const EditShareRow({super.key});
@@ -22,10 +23,7 @@ class EditShareRow extends ConsumerWidget {
               ),
             ),
             child: Text(
-              FlutterI18n.translate(
-                context,
-                'profile_page.edit_profile',
-              ),
+              ref.translate('profile_page.edit_profile'),
             ),
           ),
         ),
@@ -42,8 +40,7 @@ class EditShareRow extends ConsumerWidget {
               ),
             ),
             child: Text(
-              FlutterI18n.translate(
-                context,
+              ref.translate(
                 'profile_page.share_profile',
               ),
             ),

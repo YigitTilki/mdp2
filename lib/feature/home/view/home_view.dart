@@ -4,7 +4,9 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp2/feature/home/view_model/home_view_model.dart';
 import 'package:mdp2/main.dart';
+import 'package:mdp2/product/helper/extensions/translate_extension.dart';
 import 'package:mdp2/product/navigation/app_router.dart';
+import 'package:mdp2/product/providers/language_provider.dart';
 
 part 'home_mixin.dart';
 
@@ -23,7 +25,13 @@ class _HomeViewState extends ConsumerState<HomeView> with _HomeMixin {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(FlutterI18n.translate(context, 'home_page.hello')),
+        title: Text(ref.translate('home_page.hello')),
+        actions: [
+          IconButton(
+            onPressed: changeLanguage,
+            icon: const Icon(Icons.refresh),
+          ),
+        ],
       ),
       body: state.maybeWhen(
         loading: () => const Center(
