@@ -7,6 +7,7 @@ import 'package:mdp2/feature/profile/presentation/widgets/albums_view.dart';
 import 'package:mdp2/feature/profile/presentation/widgets/edit_share_row.dart';
 import 'package:mdp2/feature/profile/presentation/widgets/follower_detail_row.dart';
 import 'package:mdp2/feature/profile/presentation/widgets/user_info_column.dart';
+import 'package:mdp2/feature/profile/viewmodel/profile_view_model.dart';
 import 'package:mdp2/product/helper/app_padding.dart';
 import 'package:mdp2/product/helper/app_spacer.dart';
 
@@ -29,7 +30,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> with _ProfileMixin {
   @override
   Widget build(BuildContext context) {
     final user = widget.userModel;
-    final state = ref.watch(profileProvider);
+    final state = ref.watch(profileViewModelProvider(user.id.toString()));
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -67,14 +68,12 @@ class _ProfileViewState extends ConsumerState<ProfileView> with _ProfileMixin {
             Expanded(
               child: TabBarView(
                 children: [
-                  state.posts.maybeWhen(
+                  state.maybeWhen(
                     loading: () =>
                         const Center(child: CircularProgressIndicator()),
-                    data: (data) => state.albums.maybeWhen(
-                      loading: () =>
-                          const Center(child: CircularProgressIndicator()),
-                      data: (data) => AlbumsView(userModel: widget.userModel),
-                      orElse: SizedBox.new,
+                    data: (data) => AlbumsView(
+                      userModel: widget.userModel,
+                      profileModel: data,
                     ),
                     orElse: SizedBox.new,
                   ),

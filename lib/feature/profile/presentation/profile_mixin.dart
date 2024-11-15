@@ -5,13 +5,13 @@ mixin _ProfileMixin on ConsumerState<ProfileView> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref
+      /* ref
           .read(profileProvider.notifier)
           .getAlbums(widget.userModel.id.toString());
 
       ref
           .read(profileProvider.notifier)
-          .getPosts(widget.userModel.id.toString());
+          .getPosts(widget.userModel.id.toString()); */
     });
   }
 }

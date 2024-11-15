@@ -4,29 +4,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp2/feature/home/model/user_model.dart';
 import 'package:mdp2/feature/profile/application/profile_provider.dart';
+import 'package:mdp2/feature/profile/model/profile_model.dart';
+import 'package:mdp2/feature/profile/viewmodel/profile_view_model.dart';
 import 'package:mdp2/product/navigation/app_router.dart';
 
 class AlbumsView extends ConsumerWidget {
-  const AlbumsView({required this.userModel, super.key});
+  const AlbumsView({
+    required this.profileModel,
+    required this.userModel,
+    super.key,
+  });
 
   final UserModel userModel;
+  final ProfileModel profileModel;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(profileProvider);
-
     return RefreshIndicator(
       onRefresh: () async {
-        await ref.read(profileProvider.notifier).reloadFailedImages();
+        await ref
+            .read(profileViewModelProvider(userModel.id.toString()).notifier)
+            .reloadFailedImages();
       },
       child: GridView.builder(
         shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
         ),
-        itemCount: state.albums.value?.length ?? 0,
+        itemCount: profileModel.albums?.length ?? 0,
         itemBuilder: (BuildContext context, int index) {
-          final imageUrl = state.imageUrls.value?[index] ?? '';
+          final imageUrl = profileModel.imageUrls?[index] ?? '';
 
           return Stack(
             alignment: Alignment.topRight,
@@ -55,7 +62,11 @@ class AlbumsView extends ConsumerWidget {
                           .add(index);
                       return InkWell(
                         onTap: () => ref
-                            .read(profileProvider.notifier)
+                            .read(
+                              profileViewModelProvider(
+                                userModel.id.toString(),
+                              ).notifier,
+                            )
                             .reloadImage(index),
                         child: const Icon(Icons.refresh),
                       );
