@@ -14,7 +14,10 @@ class UserInfoColumn extends StatelessWidget {
       children: [
         Text(
           user.name,
-          style: const TextStyle(fontWeight: FontWeight.w700),
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall
+              ?.copyWith(fontWeight: FontWeight.w700),
         ),
         const AppSpacer.vertical5(),
         Row(

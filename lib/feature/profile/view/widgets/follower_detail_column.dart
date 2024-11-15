@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class FollowerDetailColumn extends StatelessWidget {
   const FollowerDetailColumn({
@@ -16,11 +16,13 @@ class FollowerDetailColumn extends StatelessWidget {
       children: [
         Text(
           count,
-          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
         ),
         Text(
           label,
-          style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
+          style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
     );

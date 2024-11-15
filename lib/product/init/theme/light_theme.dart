@@ -30,7 +30,7 @@ final class LightTheme implements BaseTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          textStyle: textTheme.labelSmall,
+          textStyle: textTheme.titleSmall,
         ),
       );
 

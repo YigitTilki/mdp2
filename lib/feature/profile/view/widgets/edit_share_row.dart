@@ -14,13 +14,6 @@ class EditShareRow extends ConsumerWidget {
           flex: 4,
           child: ElevatedButton(
             onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              ),
-            ),
             child: Text(
               ref.translate('profile_page.edit_profile'),
             ),
@@ -31,13 +24,6 @@ class EditShareRow extends ConsumerWidget {
           flex: 4,
           child: ElevatedButton(
             onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              ),
-            ),
             child: Text(
               ref.translate(
                 'profile_page.share_profile',
