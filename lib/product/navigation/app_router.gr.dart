@@ -32,7 +32,7 @@ class HomeRoute extends PageRouteInfo<void> {
 /// [PostsView]
 class PostsRoute extends PageRouteInfo<PostsRouteArgs> {
   PostsRoute({
-    required UserModel userModel,
+    required User userModel,
     required int initialIndex,
     Key? key,
     List<PageRouteInfo>? children,
@@ -68,7 +68,7 @@ class PostsRouteArgs {
     this.key,
   });
 
-  final UserModel userModel;
+  final User userModel;
 
   final int initialIndex;
 
@@ -84,7 +84,7 @@ class PostsRouteArgs {
 /// [ProfileView]
 class ProfileRoute extends PageRouteInfo<ProfileRouteArgs> {
   ProfileRoute({
-    required UserModel userModel,
+    required User userModel,
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
@@ -116,7 +116,7 @@ class ProfileRouteArgs {
     this.key,
   });
 
-  final UserModel userModel;
+  final User userModel;
 
   final Key? key;
 
