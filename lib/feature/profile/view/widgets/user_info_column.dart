@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mdp2/feature/home/domain/user_model/user_model.dart';
+import 'package:mdp2/feature/home/model/user.dart';
 import 'package:mdp2/product/helper/app_spacer.dart';
 
 class UserInfoColumn extends StatelessWidget {
   const UserInfoColumn({required this.user, super.key});
 
-  final UserModel user;
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class UserInfoColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          user.name ?? '',
+          user.name,
           style: const TextStyle(fontWeight: FontWeight.w700),
         ),
         const AppSpacer.vertical5(),
@@ -21,14 +21,14 @@ class UserInfoColumn extends StatelessWidget {
           children: [
             const Icon(Icons.business),
             const AppSpacer.horizontal5(),
-            Text(user.company?.name ?? ''),
+            Text(user.company.name),
           ],
         ),
         Row(
           children: [
             const Icon(Icons.home),
             const AppSpacer.horizontal5(),
-            Text(user.address?.city ?? ''),
+            Text(user.address.city ?? ''),
           ],
         ),
       ],

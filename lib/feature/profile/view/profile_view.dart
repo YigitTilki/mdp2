@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mdp2/feature/home/domain/user_model/user_model.dart';
-import 'package:mdp2/feature/profile/application/profile_provider.dart';
-import 'package:mdp2/feature/profile/presentation/widgets/albums_view.dart';
-import 'package:mdp2/feature/profile/presentation/widgets/edit_share_row.dart';
-import 'package:mdp2/feature/profile/presentation/widgets/follower_detail_row.dart';
-import 'package:mdp2/feature/profile/presentation/widgets/user_info_column.dart';
+import 'package:mdp2/feature/home/model/user.dart';
+import 'package:mdp2/feature/profile/view/widgets/albums_view.dart';
+import 'package:mdp2/feature/profile/view/widgets/edit_share_row.dart';
+import 'package:mdp2/feature/profile/view/widgets/follower_detail_row.dart';
+import 'package:mdp2/feature/profile/view/widgets/user_info_column.dart';
+import 'package:mdp2/feature/profile/view_model/profile_view_model.dart';
 import 'package:mdp2/product/helper/app_padding.dart';
 import 'package:mdp2/product/helper/app_spacer.dart';
 
@@ -19,7 +19,7 @@ class ProfileView extends ConsumerStatefulWidget {
     super.key,
   });
 
-  final UserModel userModel;
+  final User userModel;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _ProfileViewState();
@@ -29,14 +29,14 @@ class _ProfileViewState extends ConsumerState<ProfileView> with _ProfileMixin {
   @override
   Widget build(BuildContext context) {
     final user = widget.userModel;
-    final state = ref.watch(profileProvider);
+    final state = ref.watch(profileViewModelProvider(user.id.toString()));
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: false,
           automaticallyImplyLeading: false,
-          title: Text(user.username ?? ''),
+          title: Text(user.username),
           actions: const [],
         ),
         body: Column(
@@ -67,14 +67,12 @@ class _ProfileViewState extends ConsumerState<ProfileView> with _ProfileMixin {
             Expanded(
               child: TabBarView(
                 children: [
-                  state.posts.maybeWhen(
+                  state.maybeWhen(
                     loading: () =>
                         const Center(child: CircularProgressIndicator()),
-                    data: (data) => state.albums.maybeWhen(
-                      loading: () =>
-                          const Center(child: CircularProgressIndicator()),
-                      data: (data) => AlbumsView(userModel: widget.userModel),
-                      orElse: SizedBox.new,
+                    data: (data) => AlbumsView(
+                      userModel: widget.userModel,
+                      profileModel: data,
                     ),
                     orElse: SizedBox.new,
                   ),

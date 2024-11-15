@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:mdp2/feature/profile/presentation/widgets/follower_detail_column.dart';
-import 'package:mdp2/feature/profile/presentation/widgets/profile_avatar.dart';
+import 'package:mdp2/feature/profile/view/widgets/follower_detail_column.dart';
+import 'package:mdp2/feature/profile/view/widgets/profile_avatar.dart';
 
 class FollowerDetailRow extends StatelessWidget {
   const FollowerDetailRow({super.key});
