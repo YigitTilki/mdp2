@@ -4,7 +4,7 @@ import 'package:mdp2/feature/home/model/user.dart';
 import 'package:mdp2/feature/home/view/home_view.dart';
 import 'package:mdp2/feature/posts/presentation/posts_view.dart';
 import 'package:mdp2/feature/profile/presentation/profile_view.dart';
-import 'package:mdp2/feature/splash/presentation/splash_view.dart';
+import 'package:mdp2/feature/splash/view/splash_view.dart';
 
 part 'app_router.gr.dart';
 
