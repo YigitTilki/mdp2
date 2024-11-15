@@ -8,22 +8,22 @@ class ApiService {
       : dio = Dio(
           BaseOptions(
             baseUrl: _baseUrl,
-            connectTimeout: const Duration(seconds: 10),
-            receiveTimeout: const Duration(seconds: 10),
+            connectTimeout: const Duration(seconds: 5),
+            receiveTimeout: const Duration(seconds: 3),
           ),
         ) {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
-          logger.d('Requesting: ${options.method} ${options.path}');
+          _logger.d('Requesting: ${options.method} ${options.path}');
           return handler.next(options);
         },
         onResponse: (response, handler) {
-          logger.d('Response: ${response.statusCode} ${response.data}');
+          _logger.d('Response: ${response.statusCode} ${response.data}');
           return handler.next(response);
         },
         onError: (DioException e, handler) {
-          logger.d('Error occurred: ${e.message}');
+          _logger.d('Error occurred: ${e.message}');
           return handler.next(e);
         },
       ),
@@ -31,5 +31,5 @@ class ApiService {
   }
   static final String _baseUrl = dotenv.env[EnvEnums.BASE_URL.name]!;
   final Dio dio;
-  final Logger logger = Logger();
+  final _logger = Logger();
 }
