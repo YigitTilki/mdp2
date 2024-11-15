@@ -17,6 +17,8 @@
 
 *.g.dart
 
+*.freezed.dart
+
 *.gr.dart
 
 # IntelliJ related
