@@ -110,11 +110,15 @@ class ProfileViewModel extends _$ProfileViewModel {
   }
 
   Future<void> _initializeImageUrls(List<Album> albums) async {
-    _imageUrls.clear();
-    for (var i = 0; i < albums.length; i++) {
-      _imageUrls[i] = albums[i].photos?.first.url ?? '';
+    try {
+      _imageUrls.clear();
+      for (var i = 0; i < albums.length; i++) {
+        _imageUrls[i] = albums[i].photos?.first.url ?? '';
+      }
+      state = AsyncData(state.value!.copyWith(imageUrls: Map.from(_imageUrls)));
+    } catch (e) {
+      logger.d('error initialize image urls: $e');
     }
-    state = AsyncData(state.value!.copyWith(imageUrls: Map.from(_imageUrls)));
   }
 
   void reloadImage(int index) {
