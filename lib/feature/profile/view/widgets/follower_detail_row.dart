@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp2/feature/profile/view/widgets/follower_detail_column.dart';
 import 'package:mdp2/feature/profile/view/widgets/profile_avatar.dart';

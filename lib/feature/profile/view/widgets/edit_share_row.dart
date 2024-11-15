@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp2/product/helper/app_spacer.dart';
 import 'package:mdp2/product/helper/extensions/translate_extension.dart';
