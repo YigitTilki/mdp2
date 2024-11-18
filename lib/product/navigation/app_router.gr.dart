@@ -32,8 +32,9 @@ class HomeRoute extends PageRouteInfo<void> {
 /// [PostsView]
 class PostsRoute extends PageRouteInfo<PostsRouteArgs> {
   PostsRoute({
-    required UserModel userModel,
+    required User userModel,
     required int initialIndex,
+    required ProfileState profileModel,
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
@@ -41,6 +42,7 @@ class PostsRoute extends PageRouteInfo<PostsRouteArgs> {
           args: PostsRouteArgs(
             userModel: userModel,
             initialIndex: initialIndex,
+            profileModel: profileModel,
             key: key,
           ),
           initialChildren: children,
@@ -55,6 +57,7 @@ class PostsRoute extends PageRouteInfo<PostsRouteArgs> {
       return PostsView(
         userModel: args.userModel,
         initialIndex: args.initialIndex,
+        profileModel: args.profileModel,
         key: args.key,
       );
     },
@@ -65,18 +68,21 @@ class PostsRouteArgs {
   const PostsRouteArgs({
     required this.userModel,
     required this.initialIndex,
+    required this.profileModel,
     this.key,
   });
 
-  final UserModel userModel;
+  final User userModel;
 
   final int initialIndex;
+
+  final ProfileState profileModel;
 
   final Key? key;
 
   @override
   String toString() {
-    return 'PostsRouteArgs{userModel: $userModel, initialIndex: $initialIndex, key: $key}';
+    return 'PostsRouteArgs{userModel: $userModel, initialIndex: $initialIndex, profileModel: $profileModel, key: $key}';
   }
 }
 
@@ -84,7 +90,7 @@ class PostsRouteArgs {
 /// [ProfileView]
 class ProfileRoute extends PageRouteInfo<ProfileRouteArgs> {
   ProfileRoute({
-    required UserModel userModel,
+    required User userModel,
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
@@ -116,7 +122,7 @@ class ProfileRouteArgs {
     this.key,
   });
 
-  final UserModel userModel;
+  final User userModel;
 
   final Key? key;
 
