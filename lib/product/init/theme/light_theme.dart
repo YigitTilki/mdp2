@@ -12,7 +12,7 @@ final class LightTheme implements BaseTheme {
   @override
   AppBarTheme get appBarTheme => AppBarTheme(
         color: colorScheme.surface,
-        titleTextStyle: textTheme.headlineSmall,
+        titleTextStyle: textTheme.titleLarge,
         centerTitle: true,
         actionsIconTheme: IconThemeData(color: colorScheme.secondary, size: 30),
         iconTheme: IconThemeData(color: colorScheme.secondary, size: 30),
