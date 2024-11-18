@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mdp2/feature/home/model/user.dart';
 import 'package:mdp2/feature/home/view/home_view.dart';
-import 'package:mdp2/feature/posts/presentation/posts_view.dart';
+import 'package:mdp2/feature/posts/view/posts_view.dart';
 import 'package:mdp2/feature/profile/model/profile_state.dart';
 import 'package:mdp2/feature/profile/view/profile_view.dart';
 import 'package:mdp2/feature/splash/view/splash_view.dart';

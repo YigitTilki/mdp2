@@ -13,6 +13,10 @@
         "following": "following",
         "edit_profile": "Edit Profile",
         "share_profile": "Share Profile"
+    },
+    "posts_page": {
+        "comments": "Comments",
+        "reply": "Reply"
     }
     
 }

@@ -13,6 +13,10 @@
         "following": "takip",
         "edit_profile": "Profili Düzenle",
         "share_profile": "Profil Paylaş"
+    },
+    "posts_page": {
+        "comments": "Yorumlar",
+        "reply": "Cevapla"
     }
 
 }

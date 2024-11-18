@@ -14,8 +14,8 @@ final class LightTheme implements BaseTheme {
         color: colorScheme.surface,
         titleTextStyle: textTheme.titleLarge,
         centerTitle: true,
-        actionsIconTheme: IconThemeData(color: colorScheme.secondary, size: 30),
-        iconTheme: IconThemeData(color: colorScheme.secondary, size: 30),
+        actionsIconTheme: IconThemeData(color: colorScheme.secondary, size: 20),
+        iconTheme: IconThemeData(color: colorScheme.secondary, size: 20),
       );
 
   @override
