@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mdp2/feature/splash/view/widgets/no_net_dialog.dart';
 import 'package:mdp2/feature/splash/view_model/splash_view_model.dart';
 import 'package:mdp2/main.dart';
 import 'package:mdp2/product/navigation/app_router.dart';
@@ -26,8 +27,9 @@ class _SplashViewState extends ConsumerState<SplashView> {
             if (data == true) {
               appRouter.replace(const HomeRoute());
             } else {
-              // TODO: set no net dialog
-              showAboutDialog(context: context);
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                NoNetDialog.show(context);
+              });
             }
             return null;
           },

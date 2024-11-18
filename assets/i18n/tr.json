@@ -1,4 +1,8 @@
 {
+  "general": {
+        "try_again": "Tekrar Dene",
+        "no_internet": "İnternet Bağlantısı Yok"
+    },
   "home_page": { 
       "hello": "Merhaba",
       "welcome": "Uygulamaya hoş geldiniz"

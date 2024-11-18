@@ -24,4 +24,14 @@ class SplashViewModel extends _$SplashViewModel {
   Future<void> _delay() async {
     await Future<void>.delayed(const Duration(seconds: 2));
   }
+
+  Future<void> reload() async {
+    state = const AsyncLoading();
+    try {
+      final result = await checkInternetConnection();
+      state = AsyncData(result);
+    } catch (e, st) {
+      state = AsyncError(e, st);
+    }
+  }
 }
