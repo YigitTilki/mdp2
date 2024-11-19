@@ -9,6 +9,7 @@ import 'package:mdp2/feature/profile/view/widgets/user_info_column.dart';
 import 'package:mdp2/feature/profile/view_model/profile_view_model.dart';
 import 'package:mdp2/product/helper/app_padding.dart';
 import 'package:mdp2/product/helper/app_spacer.dart';
+import 'package:mdp2/product/helper/extensions/translate_extension.dart';
 
 part 'profile_mixin.dart';
 
@@ -34,6 +35,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> with _ProfileMixin {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          forceMaterialTransparency: true,
           centerTitle: false,
           automaticallyImplyLeading: false,
           title: Text(user.username),
@@ -76,7 +78,10 @@ class _ProfileViewState extends ConsumerState<ProfileView> with _ProfileMixin {
                     ),
                     orElse: SizedBox.new,
                   ),
-                  const Text('fsd'),
+                  Center(
+                    child:
+                        Text(ref.translate('profile_page.no_mentioned_posts')),
+                  ),
                 ],
               ),
             ),

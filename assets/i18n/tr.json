@@ -1,4 +1,8 @@
 {
+  "general": {
+        "try_again": "Tekrar Dene",
+        "no_internet": "İnternet Bağlantısı Yok"
+    },
   "home_page": { 
       "hello": "Merhaba",
       "welcome": "Uygulamaya hoş geldiniz"
@@ -8,7 +12,14 @@
         "followers": "takipçi",
         "following": "takip",
         "edit_profile": "Profili Düzenle",
-        "share_profile": "Profil Paylaş"
+        "share_profile": "Profil Paylaş",
+        "no_mentioned_posts": "Henüz etiketlendiğin gönderi yok"
+    },
+    "posts_page": {
+        "posts": "Gönderiler",
+        "comments": "Yorumlar",
+        "reply": "Cevapla",
+        "failed_to_upload_photo": "Fotoğraf Yüklenemedi"
     }
 
 }

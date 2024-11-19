@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mdp2/product/helper/extensions/theme_extension.dart';
 
-class FollowerDetailColumn extends StatelessWidget {
+class FollowerDetailColumn extends ConsumerWidget {
   const FollowerDetailColumn({
     required this.count,
     required this.label,
@@ -11,18 +13,18 @@ class FollowerDetailColumn extends StatelessWidget {
   final String label;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         Text(
           count,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+          style: ref.textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
         ),
         Text(
           label,
-          style: Theme.of(context).textTheme.bodySmall,
+          style: ref.textTheme.bodySmall,
         ),
       ],
     );

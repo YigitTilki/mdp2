@@ -25,11 +25,12 @@ class _HomeViewState extends ConsumerState<HomeView> with _HomeMixin {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(ref.translate('home_page.hello')),
+        forceMaterialTransparency: true,
+        title: Text(ref.translate('home_page.welcome')),
         actions: [
           IconButton(
             onPressed: changeLanguage,
-            icon: const Icon(Icons.refresh),
+            icon: const Icon(Icons.language),
           ),
         ],
       ),
@@ -55,6 +56,9 @@ class _HomeViewState extends ConsumerState<HomeView> with _HomeMixin {
               );
             },
           ),
+        ),
+        error: (error, stack) => Center(
+          child: Text(error.toString()),
         ),
         orElse: () => const SizedBox(),
       ),
