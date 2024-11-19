@@ -7,6 +7,7 @@ import 'package:mdp2/feature/posts/view/widgets/comments_sheet.dart';
 import 'package:mdp2/feature/posts/view/widgets/post_body_text.dart';
 import 'package:mdp2/feature/profile/model/profile_state.dart';
 import 'package:mdp2/product/helper/app_padding.dart';
+import 'package:mdp2/product/helper/extensions/theme_extension.dart';
 import 'package:mdp2/product/helper/extensions/translate_extension.dart';
 
 @RoutePage()
@@ -45,7 +46,7 @@ class PostsView extends ConsumerWidget {
                 title: Text(userModel.username),
                 trailing: IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.pages),
+                  icon: const Icon(Icons.more_vert),
                 ),
               ),
               SizedBox(
@@ -57,6 +58,8 @@ class PostsView extends ConsumerWidget {
                       alignment: Alignment.center,
                       children: [
                         CachedNetworkImage(
+                          height: 400,
+                          width: double.infinity,
                           fit: BoxFit.cover,
                           imageUrl: profileModel
                                   .albums?[index1].photos?[index2].url ??
@@ -72,7 +75,7 @@ class PostsView extends ConsumerWidget {
                           right: 0,
                           top: 0,
                           child: Padding(
-                            padding: const AppPadding.allXLarge(),
+                            padding: const AppPadding.allXXLarge(),
                             child: Container(
                               padding: const AppPadding.allSmall(),
                               decoration: BoxDecoration(
@@ -81,7 +84,9 @@ class PostsView extends ConsumerWidget {
                               ),
                               child: Text(
                                 '${index2 + 1}/${profileModel.albums?[index1].photos?.length ?? 0}',
-                                style: const TextStyle(color: Colors.white),
+                                style: ref.textTheme.bodySmall?.copyWith(
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),

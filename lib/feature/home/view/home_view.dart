@@ -25,6 +25,7 @@ class _HomeViewState extends ConsumerState<HomeView> with _HomeMixin {
 
     return Scaffold(
       appBar: AppBar(
+        forceMaterialTransparency: true,
         title: Text(ref.translate('home_page.welcome')),
         actions: [
           IconButton(

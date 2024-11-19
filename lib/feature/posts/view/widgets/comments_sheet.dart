@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp2/feature/posts/view_model/posts_view_model.dart';
 import 'package:mdp2/product/helper/app_padding.dart';
 import 'package:mdp2/product/helper/app_spacer.dart';
+import 'package:mdp2/product/helper/extensions/theme_extension.dart';
 import 'package:mdp2/product/helper/extensions/translate_extension.dart';
 
 class CommentsSheet extends ConsumerWidget {
@@ -34,7 +35,10 @@ class CommentsSheet extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text(ref.translate('posts_page.comments')),
+              Text(
+                ref.translate('posts_page.comments'),
+                style: ref.textTheme.titleLarge,
+              ),
               const AppSpacer.vertical10(),
               comments.maybeWhen(
                 loading: () => const Center(child: CircularProgressIndicator()),
@@ -58,14 +62,16 @@ class CommentsSheet extends ConsumerWidget {
                               children: [
                                 Text(
                                   data[index].email!,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                  style: ref.textTheme.bodyMedium?.copyWith(
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 const AppSpacer.vertical5(),
                                 Text(
                                   data[index].body!,
-                                  style: const TextStyle(color: Colors.black54),
+                                  style: ref.textTheme.bodySmall?.copyWith(
+                                    color: Colors.black54,
+                                  ),
                                 ),
                                 TextButton(
                                   onPressed: () {},

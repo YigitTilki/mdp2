@@ -35,6 +35,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> with _ProfileMixin {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          forceMaterialTransparency: true,
           centerTitle: false,
           automaticallyImplyLeading: false,
           title: Text(user.username),

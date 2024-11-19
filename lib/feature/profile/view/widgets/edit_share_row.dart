@@ -33,6 +33,7 @@ class EditShareRow extends ConsumerWidget {
         ),
         const AppSpacer.horizontal10(),
         Expanded(
+          flex: 2,
           child: IconButton(
             onPressed: () {},
             style: IconButton.styleFrom(
