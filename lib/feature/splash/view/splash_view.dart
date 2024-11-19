@@ -42,6 +42,9 @@ class _SplashViewState extends ConsumerState<SplashView> {
             }
             return null;
           },
+          error: (error, stack) => Center(
+            child: Text(error.toString()),
+          ),
           orElse: SizedBox.new,
         ),
       ),

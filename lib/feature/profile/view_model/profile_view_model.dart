@@ -115,7 +115,9 @@ class ProfileViewModel extends _$ProfileViewModel {
       for (var i = 0; i < albums.length; i++) {
         _imageUrls[i] = albums[i].photos?.first.url ?? '';
       }
-      state = AsyncData(state.value!.copyWith(imageUrls: Map.from(_imageUrls)));
+      state = AsyncValue.data(
+        state.value!.copyWith(imageUrls: Map.from(_imageUrls)),
+      );
     } catch (e) {
       logger.d('error initialize image urls: $e');
     }
@@ -126,18 +128,24 @@ class ProfileViewModel extends _$ProfileViewModel {
       _imageUrls[index] =
           '${_imageUrls[index]}?timestamp=${DateTime.now().millisecondsSinceEpoch}';
       failedImages.remove(index);
-      state = AsyncData(state.value!.copyWith(imageUrls: Map.from(_imageUrls)));
+      state = AsyncValue.data(
+          state.value!.copyWith(imageUrls: Map.from(_imageUrls)));
     }
   }
 
   Future<void> reloadFailedImages() async {
-    for (final index in failedImages) {
-      if (_imageUrls.containsKey(index)) {
-        _imageUrls[index] =
-            '${_imageUrls[index]}?timestamp=${DateTime.now().millisecondsSinceEpoch}';
+    try {
+      for (final index in failedImages) {
+        if (_imageUrls.containsKey(index)) {
+          _imageUrls[index] =
+              '${_imageUrls[index]}?timestamp=${DateTime.now().millisecondsSinceEpoch}';
+        }
       }
+      failedImages.clear();
+
+      state = AsyncData(state.value!.copyWith(imageUrls: Map.from(_imageUrls)));
+    } catch (e) {
+      logger.d('Error while reloading failed images: $e');
     }
-    failedImages.clear();
-    state = AsyncData(state.value!.copyWith(imageUrls: Map.from(_imageUrls)));
   }
 }

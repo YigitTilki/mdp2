@@ -55,7 +55,6 @@ class AlbumsView extends ConsumerWidget {
                       child: CircularProgressIndicator(),
                     ),
                     errorWidget: (context, url, error) {
-                      print('Error loading image: $error');
                       ref
                           .read(
                             profileViewModelProvider(userModel.id.toString())
@@ -71,7 +70,7 @@ class AlbumsView extends ConsumerWidget {
                               ).notifier,
                             )
                             .reloadImage(index),
-                        child: const Icon(Icons.refresh),
+                        child: const Center(child: Icon(Icons.refresh)),
                       );
                     },
                   ),

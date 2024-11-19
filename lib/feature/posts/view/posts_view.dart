@@ -7,6 +7,7 @@ import 'package:mdp2/feature/posts/view/widgets/comments_sheet.dart';
 import 'package:mdp2/feature/posts/view/widgets/post_body_text.dart';
 import 'package:mdp2/feature/profile/model/profile_state.dart';
 import 'package:mdp2/product/helper/app_padding.dart';
+import 'package:mdp2/product/helper/extensions/translate_extension.dart';
 
 @RoutePage()
 class PostsView extends ConsumerWidget {
@@ -25,7 +26,7 @@ class PostsView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gönderiler'),
+        title: Text(ref.translate('posts_page.posts')),
         forceMaterialTransparency: true,
       ),
       body: PageView.builder(
@@ -63,8 +64,9 @@ class PostsView extends ConsumerWidget {
                           placeholder: (context, url) => const Center(
                             child: CircularProgressIndicator(),
                           ),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
+                          errorWidget: (context, url, error) => Text(
+                            ref.translate('posts_page.failed_to_upload_photo'),
+                          ),
                         ),
                         Positioned(
                           right: 0,

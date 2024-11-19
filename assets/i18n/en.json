@@ -12,11 +12,14 @@
         "followers": "followers",
         "following": "following",
         "edit_profile": "Edit Profile",
-        "share_profile": "Share Profile"
+        "share_profile": "Share Profile",
+        "no_mentioned_posts": "There is no mentioned posts"
     },
     "posts_page": {
+        "posts": "Posts",
         "comments": "Comments",
-        "reply": "Reply"
+        "reply": "Reply",
+        "failed_to_upload_photo": "Failed To Upload Photo"
     }
     
 }
